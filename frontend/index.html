@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Clinical Scribe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>🏥 AI Clinical Scribe</h1>
+        
+        <div class="input-section">
+            <label for="notes">Patient Narrative:</label>
+            <textarea id="notes" placeholder="Example: 45yo male reports chest pain starting 2 hours ago..."></textarea>
+            
+            <button onclick="generateNote()">Generate SOAP Note ⚡</button>
+        </div>
+
+        <div id="loading" class="hidden">Thinking... 🧠</div>
+        
+        <div id="result" class="hidden">
+            <h3>Generated SOAP Note:</h3>
+            <div id="soap-content"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

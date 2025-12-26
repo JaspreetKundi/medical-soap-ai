@@ -1,0 +1,18 @@
+# --- SECRETS (Never push these) ---
+.env
+backend/.env
+
+# --- PYTHON JUNK ---
+__pycache__/
+*.pyc
+.venv/
+venv/
+backend/.venv/
+
+# --- DATABASE (Don't push the actual data) ---
+*.db
+backend/*.db
+*.sqlite3
+
+# --- SYSTEM FILES ---
+.DS_Store
