@@ -1,0 +1,111 @@
+/* --- GLOBAL VARIABLES --- */
+:root {
+    --bg-color: #f8fafc;
+    --text-color: #212529;
+    --card-bg: #ffffff;
+    --sidebar-bg: #ffffff;
+    --border-color: #e2e8f0;
+    --input-bg: #ffffff;
+    --input-border: #ced4da;
+    --muted-color: #64748b;
+}
+
+/* --- DARK MODE OVERRIDES --- */
+[data-theme="dark"] {
+    --bg-color: #0f172a;       /* Dark Blue/Grey Background */
+    --text-color: #f1f5f9;     /* White Text */
+    --card-bg: #1e293b;        /* Darker Card Background */
+    --sidebar-bg: #1e293b;     /* Dark Sidebar */
+    --border-color: #334155;   /* Dark Borders */
+    --input-bg: #334155;       /* Dark Input Boxes */
+    --input-border: #475569;
+    --muted-color: #94a3b8;    /* Lighter Grey for muted text */
+}
+
+/* --- APPLY TO BODY --- */
+body {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* --- COMPONENT FIXES --- */
+/* Sidebar */
+.sidebar {
+    background-color: var(--sidebar-bg) !important;
+    border-right-color: var(--border-color) !important;
+}
+
+/* Cards */
+.card {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+}
+
+/* Tables */
+.table {
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+.table thead {
+    background-color: transparent !important; /* Fixes white header bar */
+}
+[data-theme="dark"] .table thead th {
+    background-color: #1e293b;
+    color: #f1f5f9;
+    border-bottom: 1px solid #475569;
+}
+[data-theme="dark"] .table-hover tbody tr:hover {
+    background-color: #334155 !important;
+    color: white;
+}
+
+/* Text Headers */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-color) !important;
+}
+
+/* Muted Text (Dates, IDs) */
+.text-muted {
+    color: var(--muted-color) !important;
+}
+
+/* Inputs & Textareas */
+.form-control, input, textarea {
+    background-color: var(--input-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--input-border) !important;
+}
+/* Placeholder Text color fix */
+[data-theme="dark"] ::placeholder {
+    color: #cbd5e1; 
+    opacity: 1;
+}
+
+/* Links in Sidebar */
+[data-theme="dark"] .nav-link {
+    color: #cbd5e1;
+}
+[data-theme="dark"] .nav-link:hover, 
+[data-theme="dark"] .nav-link.active {
+    background-color: #334155;
+    color: #60a5fa; /* Light Blue */
+}
+
+/* Modals (Popups) */
+.modal-content {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+}
+.modal-header, .modal-footer {
+    border-color: var(--border-color) !important;
+}
+.btn-close {
+    filter: invert(var(--dark-mode-invert)); /* Makes the X white in dark mode */
+}
+[data-theme="dark"] {
+    --dark-mode-invert: 1;
+}
+[data-theme="light"] {
+    --dark-mode-invert: 0;
+}
