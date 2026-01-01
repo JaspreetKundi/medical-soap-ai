@@ -1,35 +1,27 @@
-from sqlalchemy import Column, Integer, String, Text, DateTime
+from sqlalchemy import Column, Integer, String, Text, DateTime, ForeignKey
+from sqlalchemy.orm import relationship
+from sqlalchemy.sql import func
 from database import Base
-import datetime
 
 class Patient(Base):
     __tablename__ = "patients"
-
+    
     id = Column(Integer, primary_key=True, index=True)
     first_name = Column(String, index=True)
     last_name = Column(String, index=True)
-    dob = Column(String) # Date of Birth
-    gender = Column(String)
-    medical_history = Column(Text) # "Hypertension, Diabetes..."
-    allergies = Column(Text)       # "Penicillin, Peanuts"
-    
-    # We can add a photo_url later for the UI!
+    dob = Column(String)
+    history_summary = Column(Text)  # e.g. "Diabetes, Hypertension"
+    status = Column(String, default="Waiting") # Waiting, Complete
 
-class Appointment(Base):
-    __tablename__ = "appointments"
+    # Link to their notes
+    notes = relationship("SOAPNote", back_populates="patient")
 
-    id = Column(Integer, primary_key=True, index=True)
-    patient_id = Column(Integer) # We will link this to Patient table later
-    time = Column(String)        # "09:00 AM"
-    reason = Column(String)      # "Migraine"
-    status = Column(String, default="Scheduled") # Scheduled, Waiting, Complete
-
-# ... (Patient and Appointment classes are above this) ...
-
-class Note(Base):
-    __tablename__ = "notes"
+class SOAPNote(Base):
+    __tablename__ = "soap_notes"
 
     id = Column(Integer, primary_key=True, index=True)
-    patient_id = Column(Integer)  # This links the note to a specific Patient
-    content = Column(Text)        # The actual SOAP Note text
-    created_at = Column(String)   # Date/Time (e.g., "2025-10-26 14:30")
+    patient_id = Column(Integer, ForeignKey("patients.id")) # Links to Patient Table
+    content = Column(Text)  # The actual note text
+    created_at = Column(DateTime(timezone=True), server_default=func.now()) # Timestamp
+
+    patient = relationship("Patient", back_populates="notes")
