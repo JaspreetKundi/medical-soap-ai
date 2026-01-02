@@ -61,7 +61,7 @@ MedAI Scribe listens to patient-clinician interactions in real-time, analyzes vi
 ```bash
 git clone https://github.com/yourusername/medai-scribe.git
 cd medai-scribe
-
+```
 # Create virtual environment
 python -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
