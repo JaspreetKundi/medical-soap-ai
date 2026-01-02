@@ -63,14 +63,14 @@ git clone https://github.com/yourusername/medai-scribe.git
 cd medai-scribe
 ```
 # Create virtual environment
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
+* python -m venv .venv
+* source .venv/bin/activate  
+* Windows: .venv\Scripts\activate
 
 # Install dependencies
 pip install fastapi uvicorn sqlalchemy openai python-multipart
 
-# Set up your API Key
-# (Create a .env file in backend/ or export it in terminal)
+# API Key Setup (Create a .env file in backend/ or export it in terminal)
 export OPENAI_API_KEY="your-key-here"
 
 # Run the Server
